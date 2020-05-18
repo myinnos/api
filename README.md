@@ -126,6 +126,10 @@ API for current cases, statewise, districtwise and historical data of India COVI
 - [Covid-19 India Flutter App](https://github.com/curioustechizen/covid19india-flutter) (by [@curioustechizen](https://github.com/curioustechizen))
 - [COVID-19 INDIA LOCATION BASED TRACKER](https://covid2.in) (District Screen)
 
+**Twitter Bot**
+
+- [COVID-19 Twitter BOT](https://twitter.com/covidapp_in) (by Prabhakar Thota [@myinnos](https://github.com/myinnos))
+
 **Reddit Bots**
 
 - [COVID-19 Reddit BOT](https://github.com/parshnt/covid-19-bot) (by [@parshnt](https://github.com/parshnt))
