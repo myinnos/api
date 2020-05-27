@@ -14,6 +14,7 @@ const ultimateParser = (
   stateTestData
 ) => {
   let ICMR = {};
+  let prevSamples = 0;
 
   data.tested.map((testObj) => {
     ICMR = produce(ICMR, (draftICMR) => {
@@ -26,14 +27,16 @@ const ultimateParser = (
       } catch (error) {}
       if (timestamp) {
         draftICMR[timestamp] = {
-          samples: +testObj.totalsamplestested,
+          samples: +testObj.totalsamplestested - prevSamples,
           source: testObj.source,
         };
+        prevSamples = +testObj.totalsamplestested
       }
     });
   });
 
   let tested = {TT: ICMR};
+  prevSamples = 0;
 
   stateTestData.states_tested_data.map((testObj) => {
     tested = produce(tested, (draftState) => {
@@ -46,9 +49,10 @@ const ultimateParser = (
               'yyyy-MM-dd'
             )
           ] = {
-            samples: +testObj.totaltested,
+            samples: +testObj.totaltested - prevSamples,
             source: testObj.source1,
           };
+          prevSamples = +testObj.totaltested;
         }
       );
     });

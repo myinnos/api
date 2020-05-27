@@ -6,8 +6,6 @@ const data_prev = require('../tmp/data_prev.json');
 
 update_log_file = './tmp/updatelog/log.json';
 var update_log = require("." + update_log_file);
-BOT_TOKEN = process.env.BOT_TOKEN;
-
 
 statewise_new = data.statewise.reduce((arr, row) => {
     arr[row.state] = row;
@@ -70,17 +68,18 @@ data_prev.statewise.forEach(element => {
         }
         text = text + " in " + element.state
         full_text = full_text + text + "\n"
-
-
     }
 });
-function fillSpace(str, n = 11) {
-    // console.log(str.length);
-    empt = Array(n - str.length).join(' ')
+function fillSpace(str, width) {
+    empt = Array(width - str.length).join(' ')
     return empt + str;
 }
 
 
+const width_state = 2;
+const width_confirmed = 13;
+const width_recovered = 12;
+const width_deceased = 12;
 
 function editMessage(last_updated) {
 
@@ -97,16 +96,23 @@ function editMessage(last_updated) {
         rel_states[state_code]["D"] = +statewise_new[element.state].deaths;
         rel_states[state_code]["Dd"] = +statewise_new[element.state].deltadeaths;
     });
-    words = fillSpace("St", n = 2) + fillSpace("Cnfrmd", n = 13) + fillSpace("Rcvrd") + fillSpace("Dcsd") + "\n";
-    words += Array(35).join("=") + "\n";
+    words = fillSpace("St", width_state) +
+        fillSpace("Cnfrmd", width_confirmed) +
+        fillSpace("Rcvrd", width_recovered) +
+        fillSpace("Dcsd", width_deceased) + "\n";
+
+    const length_of_line = width_state + width_confirmed + width_recovered + width_deceased;
+    words += Array(length_of_line).join("-") + "\n";
     count = 1
     for (element in rel_states) {
         c = "(" + rel_states[element].Cd + ") " + rel_states[element].C;
         r = "(" + rel_states[element].Rd + ") " + rel_states[element].R;
         d = "(" + rel_states[element].Dd + ") " + rel_states[element].D;
 
-
-        words += fillSpace(element, n = 2) + fillSpace(c, n = 13) + fillSpace(r) + fillSpace(d) + "\n";
+        words += fillSpace(element, width_state) +
+            fillSpace(c, width_confirmed) +
+            fillSpace(r, width_recovered) +
+            fillSpace(d, width_deceased) + "\n";
         count++;
         // console.log(rel_states[element]);
     }
@@ -120,25 +126,10 @@ function editMessage(last_updated) {
 
     // console.log(india_total);
 
-    words = india_total + "\n\n```\n" + words + "```";
+    words = india_total + "\n\n```\n" + words + "```\n\n*www.covid19india.org*";
+
     console.log(words);
-    // BOT_TOKEN = "";
-    // url = encodeURI("https://api.telegram.org/bot" + BOT_TOKEN + "/sendMessage?chat_id=myid&parse_mode=Markdown&text="
-    //     + words);
-    // https://t.me/covid19indiaorg_updates/929
-    // snapshots channel id -1001478052719
-    url = encodeURI("https://api.telegram.org/bot" + BOT_TOKEN + "/editMessageText?message_id=929&chat_id=@covid19indiaorg_updates&parse_mode=Markdown&text="
-        + words);
-    // console.log(url);
-    let settings = { method: "Get" };
-    fetch(url, settings).then(res => res.json())
-        .then(json => console.log(json));
-
-    url = encodeURI("https://api.telegram.org/bot" + BOT_TOKEN + "/sendMessage?chat_id=-1001478052719&parse_mode=Markdown&text="
-        + words);
-    fetch(url, settings).then(res => res.json())
-        .then(json => console.log(json));
-
+    fs.writeFileSync('/tmp/apidata_iutable', words);
     return;
 }
 
@@ -150,8 +141,6 @@ if (full_text != "") {
         + "``` Total cases: (↑" + total.deltaconfirmed + ") " + total.confirmed
         + "\n" + " Recovered  : (↑" + total.deltarecovered + ") " + total.recovered
         + "\n" + " Deaths     : (↑" + total.deltadeaths + ") " + total.deaths + "```";
-
-    state_wise_text = "State code   "
 
     const now = moment().unix()
     entry = {};
@@ -171,16 +160,9 @@ if (full_text != "") {
         + formated_time + "_\n\n"
         + tg_full_text
         + "\n\n*www.covid19india.org*";
-
     console.log(final_text);
 
-    url = encodeURI("https://api.telegram.org/bot" + BOT_TOKEN + "/sendmessage?" +
-        "disable_web_page_preview=true&parse_mode=Markdown&chat_id=-1001449683810&text=" + final_text);
-    // console.log(url);
-    let settings = { method: "Get" };
-    fetch(url, settings).then(res => res.json())
-        .then(json => console.log(json));
-
+    fs.writeFileSync('/tmp/apidata_iumessage', final_text);
 } else {
     console.log("No updates this time!");
 }

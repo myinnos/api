@@ -12,7 +12,8 @@ Now, raw data is available in three parts :
 `api.covid19india.org/raw_data1.json` (Data till EoD Apr 19th)<br>
 `api.covid19india.org/raw_data2.json` (Data till EoD Apr 26th)<br>
 `api.covid19india.org/raw_data3.json` (Data till EoD May 09th)<br>
-`api.covid19india.org/raw_data4.json` (Live 🚀)<br>
+`api.covid19india.org/raw_data4.json` (Data till EoD May 23rd)<br>
+`api.covid19india.org/raw_data5.json` (Live 🚀)<br>
 
 Also, there are some structural difference since raw_data3.json :
 When a new report/bulletin is released from a state regarding confirmed cases :
@@ -36,7 +37,8 @@ We are working on providing a singular raw_data that can be the source of truth.
 | :green_heart: | Patient Level : Raw Data Partition 1 (Till Apr 19)                        | https://api.covid19india.org/raw_data1.json              |
 | :green_heart: | Patient Level : Raw Data Partition 2 (From Apr 20 to Apr 26)              | https://api.covid19india.org/raw_data2.json              |
 | :green_heart: | Patient Level : Raw Data Partition 3 (From Apr 27 to May 09)                 | https://api.covid19india.org/raw_data3.json              |
-| :green_heart: | Patient Level : Raw Data Partition 4 (From May 10 onwards)                 | https://api.covid19india.org/raw_data4.json              |
+| :green_heart: | Patient Level : Raw Data Partition 4 (From May 10 to May 23)                 | https://api.covid19india.org/raw_data4.json              |
+| :green_heart: | Patient Level : Raw Data Partition 5 (From May 24 onwards)                 | https://api.covid19india.org/raw_data5.json              |
 | :green_heart: | National Level :Time series, State-wise stats and Test counts             | https://api.covid19india.org/data.json                   |
 | :green_heart: | State Level : has district-wise info                                      | https://api.covid19india.org/state_district_wise.json    |
 | :green_heart: | State Level : has district-wise info V2 _(minor difference in structure)_ | https://api.covid19india.org/v2/state_district_wise.json |
@@ -85,62 +87,28 @@ API for current cases, statewise, districtwise and historical data of India COVI
 - [Patient Database](http://patientdb.covid19india.org/)
 
 
-----
+-----
 
 
 ## Projects Using This API
 
 - [COVID-19 INDIA TRACKER](https://www.covid19india.org/) (Main Dashboard)
-
-**Telegram Channels**
-
-- [covid19india.org Ops Channel](https://t.me/covid19indiaorg) (News and Announcements from covid19india.org Team)
+- [covid19india.org Ops Telegram Channel](https://t.me/covid19indiaorg) (News and Announcements from covid19india.org Team)
 - [Telegram instant Updates](https://t.me/covid19indiaorg_updates) (Instant Updates from covid19india.org Team)
+- [R0 Tracker India](https://www.nidhigupta.live/rtcovid) (States and Districts wise R0 tracking in India)
 
-**Analysis**
+### Some other categories of projects using this API:
 
-- [Data Analysis : India - District & State](https://docs.google.com/spreadsheets/d/1yS8x7IrlWLdtgM6UUPm2YN8lLRmRYJKm-4Wax-8EBuI/edit?usp=sharing) (by [@Ankan_Plotter](https://t.me/Ankan_Plotter))
-- [Stats and viz in Google Data Studio](https://tinyurl.com/covid19indiadashboard) (by [@veeyeskay](https://t.me/veeyeskay))
+- [Analysis](projects/analysis.md)
 
-**Mobile App [Android]**
-- [Covid-19 Tracker For Android](http://covidapp.in) (by Prabhakar Thota [@myinnos](https://github.com/myinnos))
+- [Bots (Discord, Reddit, Telegram, etc.)](projects/bots.md)
 
-**Other Trackers/Dashboards**
+- [Browser extensions](projects/browser_extensions.md)
 
-- [Tracker](https://covidstat.info/) (by [@skavinvarnan ](https://github.com/skavinvarnan))
-- [Statistics and Predictive Analysis (India)](https://gnsp.in/covid19/) (by [@GnsP](https://github.com/GnsP))
-- [TN Specific](https://covid19trackerbk.netlify.app/) - [Repo](https://github.com/dynamicbalaji/covid19-tracker)
-- [Tracker](https://livecovid.in/) (by [@anamritraj ](https://github.com/anamritraj/livecovid.in-webapp))
-- [India & World Tracker](http://tcovid19.herokuapp.com/) (by [@thecoducer](https://github.com/thecoducer))
-- [COVID-19 Track](http://github.com/adarshbalu/covid_track/) (by [@adarshbalu](https://github.com/adarshbalu))
-- [Maharashtra COVID-19 Dashboard/Tracker](http://covid.pranavsheth.com/) (by [@pranavs80](https://github.com/pranavs80))
-- [COVID-19 India Tracker](https://covidindiatracker.netlify.app/) (by [@PrinceSumberia](https://github.com/PrinceSumberia))
-- [COVID-19 Tracker/Visualizer](https://coronago.cf/) (by [@kaushikbhat07](https://github.com/kaushikbhat07))
-- [Bihar COVID-19 Dashboard/Tracker](https://coronainbihar.github.io/) (by [@anandv01](https://github.com/anandv01))
-- [COVID19 Tracker/Predictor](https://track-covid-19ind.herokuapp.com/) (by [@manoj](https://github.com/ManojNallusamy))
-- [COVID-19 Tracker App](https://corona-india.live/) (by [@sandeshchoudhary](https://github.com/sandeshchoudhary))
-- [Corona Virus Tracker](https://virtuosars.github.io/CovidLive) (by [@VirtuosArs](https://github.com/VirtuosArs))
-- [COVID-19 Dashboard India|World](https://nkjcovid19.herokuapp.com/india) (by [@nithinkjoy-tech](https://github.com/nithinkjoy-tech))
-- [Covid19Bihar Tracker](https://covid19bihar.github.io/) (by [@arrbxr](https://github.com/arrbxr))
-- [COVID19-Tracker App, UP Highlight](https://www.covid19-tracker.in/) (by [@Deepak0404](https://github.com/Deepak0404))
-- [Covid-19 India Flutter App](https://github.com/curioustechizen/covid19india-flutter) (by [@curioustechizen](https://github.com/curioustechizen))
-- [COVID-19 INDIA LOCATION BASED TRACKER](https://covid2.in) (District Screen)
+- [Mobile apps](projects/mobile_apps.md)
 
-**Reddit Bots**
+- [Other trackers/dashboards](projects/miscellaneous.md)
 
-- [COVID-19 Reddit BOT](https://github.com/parshnt/covid-19-bot) (by [@parshnt](https://github.com/parshnt))
+- [Windows 10 apps](projects/win10_apps.md)
 
-**Telegram Bots**
-
-- [CoVID19 India Patients Analyzer and Alerts](https://github.com/xsreality/covid19)
-- [CovidBot: CoVID19 Live Stats Chatbot](https://github.com/Tele-Bots/CovidBot) (by [@gurrrung](https://github.com/gurrrung))
-- [covid19indiatracker_bot](https://github.com/cibinjoseph/covid19indiatracker_bot)
-- [INDIA COVID-19 Google Map TRACKER](https://goo.gl/maps/U32Ex1gWQxmc6Aot8)
-
-
-**Chrome/Firefox Extensions**
-- [Covid-19 Tracker](https://coronatrends.live) (by [@akanshgulati ](https://github.com/akanshgulati))
-
-
-...................................
-
+.

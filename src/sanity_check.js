@@ -7,12 +7,12 @@ const data_prev = require('../tmp/data_prev.json');
 var total = data.statewise[0];
 var err = false;
 if (total.deltaconfirmed > 10000) {
-    console.log("Delta confirmed is greater than 10k");
+    process.stderr.write("Delta confirmed is greater than 10k");
     err = true;
 }
 
 if (err) {
-    console.log("Data error. No committing!");
+    process.stderr.write("Sanity check failed. Not committing!");
     process.exit(1);
 }
 else {
